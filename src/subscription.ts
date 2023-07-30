@@ -13,18 +13,18 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
     // Just for fun :)
     // Delete before actually using
     // for (const post of ops.posts.creates) {
-    //   console.log(post.record.langs)
-    //   console.log(post.record.text)
+    //   console.log(post.record.langs, post.record.text)
     // }
 
     const postsToDelete = ops.posts.deletes.map((del) => del.uri)
     const postsToCreate = ops.posts.creates
       .filter((create) => {
         let lang = create.record.langs as string[]
-        return lang != undefined && lang.includes('se')
+        return lang != undefined && lang.includes('sv')
       })
       .map((create) => {
         // map se-related posts to a db row
+        console.log('Found a swede!', create.record.text)
         return {
           uri: create.uri,
           cid: create.cid,
