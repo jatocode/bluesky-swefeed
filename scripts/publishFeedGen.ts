@@ -18,7 +18,7 @@ const run = async () => {
   // A short name for the record that will show in urls
   // Lowercase with no spaces.
   // Ex: whats-hot
-  const recordName = 'sweskyfeed'
+  const recordName = 'swefeed'
 
   // A display name for your feed
   // Ex: What's Hot
@@ -26,7 +26,7 @@ const run = async () => {
 
   // (Optional) A description of your feed
   // Ex: Top trending content from the whole network
-  const description = 'Finds all posts with content-lang set to sv'
+  const description = 'Finds all posts with content-lang set to swedish'
 
   // (Optional) The path to an image to be used as your feed's avatar
   // Ex: ~/path/to/avatar.jpeg
@@ -42,6 +42,7 @@ const run = async () => {
   const feedGenDid =
     process.env.FEEDGEN_SERVICE_DID ?? `did:web:${process.env.FEEDGEN_HOSTNAME}`
 
+    
   // only update this if in a test environment
   const agent = new AtpAgent({ service: 'https://bsky.social' })
   await agent.login({ identifier: handle, password })

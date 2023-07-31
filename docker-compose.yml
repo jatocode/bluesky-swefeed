@@ -1,0 +1,13 @@
+version: "3"
+services:
+
+  swefeed:
+    build: .
+    image: bskyswefeed
+    ports:
+      - "4444:3000"
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: ./bskyswefeed.db.sqlite
+        target: /app/bskyswefeed.db.sqlite
