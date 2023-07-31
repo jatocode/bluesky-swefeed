@@ -1,4 +1,4 @@
-version: "3"
+version: "3.2"
 services:
 
   swefeed:
@@ -11,3 +11,4 @@ services:
       - type: bind
         source: ./bskyswefeed.db.sqlite
         target: /app/bskyswefeed.db.sqlite
+
