@@ -1,3 +1,4 @@
+import { or } from 'multiformats/bases/base'
 import {
   OutputSchema as RepoEvent,
   isCommit,
@@ -13,11 +14,13 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
     const postsToCreate = ops.posts.creates
       .filter((create) => {
         let lang = create.record.langs as string[]
-        return lang != undefined && lang.includes('sv')
+        const swed = lang != undefined && lang.includes('sv')
+        const original = create.record?.reply == null
+        return swed && original
       })
       .map((create) => {
         // map se-related posts to a db row
-        console.log('Found a swede!', create.record.text)
+        console.log('Found a swede!', create, create.record)
         return {
           uri: create.uri,
           cid: create.cid,
