@@ -3,7 +3,7 @@ services:
 
   swefeed:
     build: .
-    image: bskyswefeed
+    image: cr.taklamakan.se/bskyswefeed:1.2
     ports:
       - "4444:3000"
     restart: unless-stopped
